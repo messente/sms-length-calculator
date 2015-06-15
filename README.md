@@ -3,9 +3,18 @@ Free SMS length calculator for different programming languages.
 
 Checks if a message can be sent as GSM 7bit charset or if Unicode charset must be used.
 
-## PHP
-Optimized for reasonable speed. Initial version should allow processing ~20 000 messages in a second on a modern server.
+## Java
+Usage example
+```Java
+SmsLengthCalculator calc = new SmsLengthCalculator();
+String txt = "The morpheme can be reduplicated to emphasize the meaning of the word";
+int sms_parts = calc.getPartCount(txt);
+System.out.println("Message with text ["+txt+"] is sent as ["+sms_parts+" SMS]");
+```
 
+
+## PHP
+Usage example
 ```PHP
 $SmsCalc = new SmsLengthCalculator();
 $text = "The morpheme can be reduplicated to emphasize the meaning of the word";
