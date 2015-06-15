@@ -92,9 +92,9 @@ class SmsLengthCalculator {
             
             // Start counting the number of messages
             $sms_count = ceil(mb_strlen($content, 'UTF-8') / 153);
-            $free_chars = 153 - floor(mb_strlen($content, 'UTF-8') / 153);
+            $free_chars = mb_strlen($content, 'UTF-8') - floor(mb_strlen($content, 'UTF-8') / 153)*153;
             
-            // We have enough free characters left, don't care about the break stuff
+            // We have enough free characters left, don't care about escape character at the end of sms part
             if ($free_chars >= $sms_count-1)
                 return $sms_count;
             
