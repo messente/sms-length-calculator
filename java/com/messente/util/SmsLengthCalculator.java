@@ -6,8 +6,8 @@ import java.util.Set;
 
 public class SmsLengthCalculator {
     
-    private static final int GSM_CHARSET_7BIT = 0;
-    private static final int GSM_CHARSET_UNICODE = 2;
+    public static final int GSM_CHARSET_7BIT = 0;
+    public static final int GSM_CHARSET_UNICODE = 2;
     private static final char GSM_7BIT_ESC = '\u001b';
     
     private static final Set<String> GSM7BIT = new HashSet<>(Arrays.asList(
