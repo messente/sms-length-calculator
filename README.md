@@ -8,7 +8,7 @@ Usage example
 ```Scala
 val txt: String = "The morpheme can be reduplicated to emphasize the meaning of the word";
 val smsParts: Int  = SmsLengthCalculator.getPartCount(txt);
-System.out.println("Message with text ["+txt+"] is sent as ["+smsParts+" SMS]");
+println("Message with text ["+txt+"] is sent as ["+smsParts+" SMS]");
 ```
 
 ## Java
