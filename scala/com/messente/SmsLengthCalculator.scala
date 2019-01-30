@@ -4,7 +4,7 @@ object SmsLengthCalculator {
   val GSM_CHARSET_UNICODE = 2
   val GSM_7BIT_ESC = '\u001b'
 
-  val GSM7BITTEXT: Set[String] = Set("\f", "^", "{", "}", "\\", "[", "~", "]", "|", "€")
+  val GSM7BIT_EXT: Set[String] = Set("\f", "^", "{", "}", "\\", "[", "~", "]", "|", "€")
 
   val GSM7BIT: Set[String] = Set(
     "@", "£", "$", "¥", "è", "é", "ù", "ì", "ò", "Ç", "\n", "Ø", "ø", "\r", "Å", "å",
@@ -19,7 +19,7 @@ object SmsLengthCalculator {
 
   private[this] def getCharset(message: String): Int = {
 
-    val groupText = GSM7BIT ++ GSM7BITTEXT
+    val groupText = GSM7BIT ++ GSM7BIT_EXT
     val messageList = message.toList.map(_.toString)
 
     messageList.toSet.diff(groupText).isEmpty match {
@@ -31,7 +31,7 @@ object SmsLengthCalculator {
 
   private[this] def getPartCount7bit(message: String): Int = {
     val content7bit = message.toList.map(_.toString)
-      .map(x => if (GSM7BITTEXT.contains(x)) GSM_7BIT_ESC + x else x)
+      .map(x => if (GSM7BIT_EXT.contains(x)) GSM_7BIT_ESC + x else x)
       .map(_.toString)
       .mkString("")
 
