@@ -64,7 +64,7 @@ public class SmsLengthCalculator {
         } else {
 
             // Start counting the number of messages
-            int parts = (int)Math.ceil(content7bit.length() / 153.0);
+            int parts = (content7bit.length() - 1) / 153.0 + 1;
             int free_chars = content7bit.length() - (int)Math.floor(content7bit.length() / 153.0)*153;
 
             // We have enough free characters left, don't care about escape character at the end of sms part
@@ -107,7 +107,7 @@ public class SmsLengthCalculator {
             if (content.length() <= 70) {
                 return 1;
             } else {
-                return (int)Math.ceil(content.length() / 67.0);
+                return (content.length() - 1) / 67.0 + 1;
             }
 
         }
